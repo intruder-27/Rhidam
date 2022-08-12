@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://kit.fontawesome.com/48cbbf5082.js" crossorigin="anonymous"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script> 
+            function show_hide_password() {
+                var x = document.getElementById("password");
+                var y = document.getElementById("show-pass");
+                if (x.type === "password") {
+                    x.type = "text";
+                    y.innerHTML = "Hide";
+                } else {
+                    x.type = "password";
+                    y.innerHTML = "Show";
+                }
+            }
+        </script>
+        
+        <title> Rhidam </title>
+        {% load static %}
+        <link rel='stylesheet' href='{% static "style.css" %}'>
+    </head>
+    <body>
+        <div style="background-color: rgb(2,27,44) !important" class="jumbotron text-center" id="createAccountHeader">
+            <h1> Login</h1>
+        </div>
+        <div id="body-data">
+            <p></p>
+                    <div class='login-page-data'>
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Username" name="username" placeholder="Username">
+                              </div>
+                              
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" class="form-control" aria-label="Password" id="password" name="password" placeholder="Password">
+                                <div class="input-group-append">
+                                  <span class="input-group-text cursor-pointer" type="button" onclick="show_hide_password()" id='show-pass'>Show</span>
+                                </div>
+                              </div>
+                            <div class="input-group">
+                                <br>
+                                {% for message in messages %}
+                                    <p id="messages" class="error-messages"> {{message}} </p>
+                                {% endfor %}
+                                <input class="btn btn-default" type="submit" value="Login" id="login_button">
+                            </div>
+                        </form>
+                    </div>
+                    <br>
+                    
+                    <div class='login-page-data'>
+                            Don't have an account? 
+                            <a href="{% url 'login_module:register' %}" class="ml-2">Sign Up</a>
+                    </div>
+                    <div class='login-page-data'>
+                            Having trouble logging in?
+                            <a href="{% url 'reset_password' %}" class="ml-2">Forgot Password</a>
+                    </div>
+        </div>
+    </body>
+</html>

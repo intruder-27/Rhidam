@@ -1,0 +1,25 @@
+{% load static %}
+<html>
+    <head>
+        <title>
+            Rhidam
+        </title>
+        <style>
+            body {
+            background : url('{% static "ai2.gif" %}') no-repeat fixed center; 
+            background-color: black;
+            /* background-size: cover/contain; */
+                /* 9990108764*/
+        }
+        </style>
+        <!-- https://giphy.com/gifs/love-mexico-photography-l3mZ6dk2AjdadaxDa -->
+        <link rel='stylesheet' href='{% static "styles.css" %}'>
+    </head>
+    <body>            
+        <div id='con1'>
+            <!-- <img src='{% static "dog.gif" %}'> -->
+            <!--<p id='banner' style="font-family: 'Faster One', cursive; color:white">Rhidam</p>-->
+            <div id='con2'><a href="{% url 'login_module:login' %}" id='eave'>EAVESDROP</a></div>
+        </div>
+    </body>
+</html>
